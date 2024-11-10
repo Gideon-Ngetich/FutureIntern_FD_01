@@ -16,6 +16,7 @@ const ChatBox = ({ socket, userName, room }) => {
                     __createdtime__: data.__createdtime__
                 }
             ])
+            console.log(__createdtime__)
         })
 
         return () => socket.off('receive_message')
@@ -52,14 +53,17 @@ const ChatBox = ({ socket, userName, room }) => {
     }
 
     return (
-        <div>
+        <div className='bg-slate-800 overflow-y-scroll px-10'>
             {receivedMessages.map((msg, i) => (
-                <div key={i}>
-                    <div>
-                        <span>{msg.userName}</span>
-                        <span>{msg.__createdtime__}</span>
+                <div key={i} className=''>
+                    <div className='bg-slate-600 my-2 w-1/4 rounded-lg px-5'>
+                        <div className='flex justify-between w-full'>
+                            <div className='w-full text-slate-300'>{msg.userName}</div>
+                            <span className='w-full'>{msg.__createdtime__}</span>
+                        </div>
+                        <p className='w-full text-lg h-12 text-white'>{msg.message}</p>
                     </div>
-                    <p>{msg.message}</p>
+
                 </div>
             ))}
         </div>

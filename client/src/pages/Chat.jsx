@@ -4,15 +4,18 @@ import Sidebar from '../components/Sidebar'
 import SendMessage from '../components/SendMessage'
 import ChatBox from '../components/ChatBox'
 
-const Chat = ({socket}) => {
-    const location = useLocation()
-    const { userName, room } = location.state || {}
+const Chat = ({ socket }) => {
+  const location = useLocation()
+  const { userName, room } = location.state || {}
 
   return (
-    <div>
-        <Sidebar socket={socket} userName={userName} room={room}/>
-        <SendMessage socket={socket} userName={userName} room={room}/>
-        <ChatBox socket={socket} userName={userName} room={room}/>
+    <div className='flex h-screen w-full bg-slate-800'>
+      <Sidebar socket={socket} userName={userName} room={room} />
+      <div className='flex flex-col h-screen w-full'>
+        <ChatBox socket={socket} userName={userName} room={room} />
+        <SendMessage socket={socket} userName={userName} room={room} />
+      </div>
+
     </div>
   )
 }

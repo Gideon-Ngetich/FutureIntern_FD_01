@@ -22,21 +22,21 @@ const Sidebar = ({socket, userName, room}) => {
         navigate('/', {replace: true})
     }
   return (
-    <div>
-        <h2>{room}</h2>
+    <div className='flex flex-col justify-start items-start w-1/4 bg-slate-400'>
+        <h2 className='font-semibold text-2xl py-3 bg-blue-700 w-full text-white px-4'>{room} Group</h2>
 
         <div>
-            {roomUsers.length > 0 && <h5>Users</h5>}
+            {roomUsers.length > 0 && <h5 className='font-medium p-5 w-full text-xl text-center'>Active Users</h5>}
 
-            <ul>
+            <ul className='px-5'>
                 {roomUsers.map((user) => (
-                    <li key={user.id}>{user.userName}</li>
+                    <li key={user.id} className='text-md font-medium '>{user.userName}</li>
                 ))}
             </ul>
         </div>
 
-        <div>
-            <button onClick={leaveRoom}>Leave Room</button>
+        <div className='flex justify-center items-center w-full py-20'>
+            <button onClick={leaveRoom} className='px-6 py-3 bg-rose-600 rounded-md'>Leave Room</button>
         </div>
     </div>
   )
